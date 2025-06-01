@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Luna e Nocciolino</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="story-container">
+    <h2>Luna e Nocciolino, una storia di amicizia</h2>
+    <p>
+        Un giorno d’autunno, Luna, una bambina dai capelli ricci e gli occhi curiosi, passeggiava nel bosco vicino casa.
+        Le foglie scricchiolavano sotto i suoi stivaletti mentre osservava gli alberi colorati. 
+        All’improvviso, udì un fruscìo tra i cespugli. Si avvicinò piano e vide un piccolo scoiattolo tremante, 
+        con la zampina ferita.
+    </p>
+    <p>
+        «Oh, poverino…» sussurrò Luna, inginocchiandosi. Lo scoiattolo la guardò con occhi lucidi, ma non scappò. 
+        Luna tolse la sciarpa multicolore che aveva al collo e l’avvolse delicatamente intorno alla zampa 
+        del piccolo animale.
+    </p>
+    <p>
+        «Ciao, piccolo. Non ti farò del male, promesso. Ti chiamerò Nocciolino» disse Luna, sorridendo. 
+        Ogni giorno Luna tornava nel bosco per portargli nocciole e raccontargli storie.
+    </p>
+    <p>
+        Nocciolino cominciò a fidarsi e, piano piano, guarì. Quando fu abbastanza forte da correre e arrampicarsi di nuovo, 
+        Luna lo guardò felice ma un po’ triste.
+    </p>
+    <p>
+        «Adesso puoi tornare libero…» disse Luna. Ma Nocciolino le saltò sulla spalla, stringendosi a lei. 
+        Da quel giorno, Luna e Nocciolino diventarono inseparabili. Lui la accompagnava nei giochi nel bosco, 
+        e lei gli raccontava i suoi sogni.
+    </p>
+    <p>
+        E ogni volta che qualcuno chiedeva a Luna se avesse un animale domestico, lei rispondeva:  
+        «No, ho un amico speciale. Vive tra gli alberi e ha la coda più morbida del mondo!»
+    </p>
+    </div>
+
+    <div id="quiz-container">
+        <h1>Luna e Nocciolino - Quiz di Comprensione</h1>
+        <button id="start-btn">Inizia il Quiz</button>
+  
+		        <div id="question-container" class="hide">
+            <p id="question-text"></p>
+            <p id="timer-text">Tempo: 15s</p> <!-- Timer aggiunto -->
+            <div id="answer-buttons"></div>
+            <p id="feedback-text"></p> <!-- Feedback aggiunto -->
+            <button id="next-btn" class="hide">Prossima domanda</button>
+        </div>
+
+        <div id="result-container" class="hide">
+            <h2>Risultato del Quiz</h2>
+            <p id="score-text"></p>
+            <button id="restart-btn">Ricomincia</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+

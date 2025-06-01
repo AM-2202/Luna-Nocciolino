@@ -1,0 +1,45 @@
+/* Stile generale */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f9f4e1;
+}
+
+#quiz-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Pulsanti */
+button {
+    background-color: #ACE1AF;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.hide {
+    display: none;
+}
+
+/* Timer e feedback */
+#timer-text {
+    font-size: 18px;
+    color: #d32f2f;
+}
+
+#feedback-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+#story-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #fff3e3;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}

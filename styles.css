@@ -71,3 +71,9 @@ button:hover {
     opacity: 1 !important;
     transform: translateY(0);
 }
+#quiz-image {
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px; /* Smussa i bordi */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Aggiunge un'ombra */
+}

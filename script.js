@@ -83,6 +83,13 @@ function showQuestion() {
     });
 
     document.getElementById("next-btn").classList.add("hide");
+
+    // **Nasconde l'immagine dopo la prima domanda**
+    if (currentQuestionIndex === 1) {
+        document.getElementById("quiz-image").style.display = "none";
+    }
+
+	
 // **Aggiorna il progresso della domanda**
     document.getElementById("question-progress").innerText = `Domanda ${currentQuestionIndex + 1}/${questions.length}`;
 

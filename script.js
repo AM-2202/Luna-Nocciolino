@@ -62,12 +62,13 @@ function startTimer() {
 }
 
 function showQuestion() {
-    clearInterval(timerInterval); // Reset del timer
-    startTimer(); // Avvia il timer
-    document.getElementById("feedback-text").innerText = ""; // Cancella feedback
+    clearInterval(timerInterval);
+    startTimer();
+    document.getElementById("feedback-text").innerText = "";
 
     const questionData = questions[currentQuestionIndex];
     document.getElementById("question-text").innerText = questionData.question;
+
     const answerButtons = document.getElementById("answer-buttons");
     answerButtons.innerHTML = "";
 
@@ -75,17 +76,38 @@ function showQuestion() {
         const button = document.createElement("button");
         button.innerText = answer;
         button.addEventListener("click", () => {
-            clearInterval(timerInterval); // Ferma il timer dopo la risposta
+            clearInterval(timerInterval);
             selectAnswer(answer, questionData.correct);
         });
         answerButtons.appendChild(button);
     });
 
     document.getElementById("next-btn").classList.add("hide");
+// **Aggiorna il progresso della domanda**
+    document.getElementById("question-progress").innerText = `Domanda ${currentQuestionIndex + 1}/${questions.length}`;
+
+    // **Nasconde prima il contenitore**
+    const questionContainer = document.getElementById("question-container");
+    questionContainer.classList.remove("show-question");
+    questionContainer.style.opacity = "0";
+
+    // **Aspetta un breve momento e mostra la nuova domanda con transizione**
+    setTimeout(() => {
+        questionContainer.classList.add("show-question");
+    }, 100);
 }
 
 function selectAnswer(selected, correct) {
     const feedback = document.getElementById("feedback-text");
+
+    const buttons = document.querySelectorAll("#answer-buttons button");
+    buttons.forEach(btn => {
+        if (btn.innerText === correct) {
+            btn.classList.add("correct-answer");
+        } else if (btn.innerText === selected) {
+            btn.classList.add("wrong-answer");
+        }
+    });
 
     if (selected === correct) {
         feedback.innerText = "✅ Risposta corretta!";
@@ -114,16 +136,55 @@ function showResult() {
     document.getElementById("result-container").classList.remove("hide");
     document.getElementById("score-text").innerText = `Hai ottenuto ${score} su ${questions.length}!`;
 
-    // Nasconde "Inizia il Quiz" nella schermata dei risultati
-    document.getElementById("start-btn").classList.add("hide");
+    saveScore(); // Salva il punteggio con nome
 
-    // Assicura che il pulsante "Ricomincia" sia visibile
-    document.getElementById("restart-btn").classList.remove("hide");
+    // 📌 Recupera la classifica e la mostra
+    const leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    const leaderboardList = document.getElementById("leaderboard");
+    leaderboardList.innerHTML = "";
+
+    if (leaderboard.length === 0) {
+        leaderboardList.innerHTML = "<p>Nessun punteggio salvato ancora.</p>";
+    } else {
+        leaderboard.forEach((entry, index) => {
+            const listItem = document.createElement("li");
+            listItem.innerText = `${index + 1}. ${entry.name} - ${entry.score} punti`;
+            leaderboardList.appendChild(listItem);
+        });
+    }
 }
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]]; // Scambia gli elementi
     }
 }
+function saveScore() {
+    const playerName = prompt("Inserisci il tuo nome per la classifica:");
+    if (!playerName) return; // Se il nome è vuoto, interrompe la funzione
+
+    let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+
+    // **Troviamo se il giocatore già esiste**
+    let existingPlayerIndex = leaderboard.findIndex(entry => entry.name === playerName);
+
+    if (existingPlayerIndex !== -1) {
+        // **Aggiorna il punteggio solo se è superiore al precedente**
+        if (score > leaderboard[existingPlayerIndex].score) {
+            leaderboard[existingPlayerIndex].score = score;
+        }
+    } else {
+        // **Aggiungi un nuovo giocatore**
+        leaderboard.push({ name: playerName, score: score });
+    }
+
+    // **Ordina la classifica dal punteggio più alto**
+    leaderboard.sort((a, b) => b.score - a.score);
+
+    // **Salva la classifica aggiornata**
+    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+}
+
+
 

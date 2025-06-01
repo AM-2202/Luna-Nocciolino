@@ -45,15 +45,22 @@
   
 		        <div id="question-container" class="hide">
             <p id="question-text"></p>
-            <p id="timer-text">Tempo: 15s</p> <!-- Timer aggiunto -->
             <div id="answer-buttons"></div>
-            <p id="feedback-text"></p> <!-- Feedback aggiunto -->
+			<p id="feedback-text"></p> <!-- Feedback aggiunto -->
+			<p id="timer-text">Tempo: 15s</p> <!-- Timer aggiunto -->
+			<p id="question-progress">Domanda 1/20</p>
             <button id="next-btn" class="hide">Prossima domanda</button>
         </div>
 
         <div id="result-container" class="hide">
             <h2>Risultato del Quiz</h2>
             <p id="score-text"></p>
+			<p id="best-score-text">Miglior punteggio: 0</p>
+			<h2>🏆 Classifica Punteggi</h2>
+<ul id="leaderboard"></ul>
+
+<button id="reset-score-btn">Resetta il punteggio</button>
+
             <button id="restart-btn">Ricomincia</button>
         </div>
     </div>

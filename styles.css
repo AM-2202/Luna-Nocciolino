@@ -15,11 +15,16 @@ body {
 
 /* Pulsanti */
 button {
-    background-color: #ACE1AF;
+    padding: 10px 20px;
+    font-size: 18px;
     border: none;
-    padding: 10px;
     cursor: pointer;
-    font-size: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .hide {
@@ -42,4 +47,27 @@ button {
     padding: 20px;
     background: #fff3e3;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.correct-answer {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.wrong-answer {
+    background-color: #FF3B3B; /* Rosso */
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#question-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Assicurati che l'elemento parta nascosto e venga reso visibile con JavaScript */
+.show-question {
+    opacity: 1 !important;
+    transform: translateY(0);
 }
